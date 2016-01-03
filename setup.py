@@ -17,7 +17,7 @@ if sys.version_info < (2, 5):
     install_requires.append('threadframe')
 
 setup(
-    name='Products.ZopeHealthWatcher',
+    name='ZopeHealthWatcher',
     version='0.9.dev0',
     description=(
         'ZopeHealthWatcher allows you to monitor and debug '
