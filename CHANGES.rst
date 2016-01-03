@@ -1,7 +1,7 @@
 Changelog
 =========
 
-0.9.0 (unreleased)
+0.9.0 (2016-01-03)
 ------------------
 
 - Do not depend on threadframe if Python > 2.4
