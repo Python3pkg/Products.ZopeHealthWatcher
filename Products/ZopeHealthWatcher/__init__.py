@@ -39,18 +39,12 @@ except ImportError:
         else:
             logger.error('%s %s' % (title, msg))
 
-try:
-    import threadframe
-except ImportError:
-    LOG('ZopeHealthWatcher', ERROR, "Incorrectly installed threadframe module")
+if not custom.ACTIVATED:
+    LOG('ZopeHealthWatcher', INFO,
+        "Not activated, you must change ACTIVATED in custom.py")
+elif custom.SECRET == 'secret':
+    LOG('ZopeHealthWatcher', ERROR,
+        "Not activated, you must change SECRET in custom.py")
 else:
-    if not custom.ACTIVATED:
-        LOG('ZopeHealthWatcher', INFO,
-            "Not activated, you must change ACTIVATED in custom.py")
-    elif custom.SECRET == 'secret':
-        LOG('ZopeHealthWatcher', ERROR,
-            "Not activated, you must change SECRET in custom.py")
-    else:
-        import dumper
-        LOG('ZopeHealthWatcher', INFO, "Installed")
-
+    import dumper
+    LOG('ZopeHealthWatcher', INFO, "Installed")

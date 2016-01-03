@@ -20,12 +20,16 @@
 ZServer hook to dump a traceback of the running python threads.
 """
 import os
+import sys
 import thread
-import threadframe
 import traceback
 from datetime import datetime
 from cStringIO import StringIO
 from mako.template import Template
+
+if not hasattr(sys, '_current_frames'):
+    import threadframe.dict
+    sys._current_frames = threadframe.dict
 
 try:
     from zLOG import LOG, DEBUG
@@ -51,7 +55,7 @@ def dump_threads():
     Returns a string with the tracebacks.
     """
     res = []
-    frames = threadframe.dict()
+    frames = sys._current_frames()
     this_thread_id = thread.get_ident()
 
     for thread_id, frame in frames.iteritems():
@@ -147,4 +151,3 @@ try:
     zhttp_handler.match = match
 except ImportError:
     pass  # not in a zope environment
-
