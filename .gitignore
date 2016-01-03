@@ -1,0 +1,10 @@
+*.egg-info/
+*.eggs/
+*.pyc
+/.installed.cfg
+/bin/
+/include/
+/lib/
+/local/
+/parts/
+/var

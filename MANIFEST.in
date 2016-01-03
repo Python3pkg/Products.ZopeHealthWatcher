@@ -1,4 +1,8 @@
+exclude .git*
 include LICENSE.txt
-include README.txt
-include CHANGES
+include *.rst
+include *.png
+include *.py
+include buildout.cfg
+include zeo.cfg
 recursive-include Products *.txt *.html *.py
