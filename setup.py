@@ -1,9 +1,19 @@
 # -*- coding: utf8 -*-
 import os
+import sys
 from setuptools import setup, find_packages
 
 README = os.path.join(os.path.dirname(__file__),
                       'README.txt')
+
+install_requires = [
+    'setuptools',
+    'Mako'
+]
+
+if sys.version_info < (2, 5):
+    install_requires.append('threadframe')
+
 
 setup(name='ZopeHealthWatcher',
       version='0.4',
@@ -14,11 +24,7 @@ setup(name='ZopeHealthWatcher',
       url='http://bitbucket.org/tarek/zopewatcher',
       packages=find_packages(),
       namespace_packages=['Products'],
-      install_requires=[
-          'setuptools',
-          'threadframe',
-          'Mako'
-      ],
+      install_requires=install_requires,
       classifiers=[
         "Framework :: Plone",
         "Framework :: Zope2",
@@ -33,4 +39,3 @@ setup(name='ZopeHealthWatcher',
             "zope_health_watcher = Products.ZopeHealthWatcher.check_zope:main",
           ]}
       )
-

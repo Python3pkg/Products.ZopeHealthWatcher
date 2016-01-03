@@ -17,8 +17,9 @@ is being executed.
 Installation
 ------------
 
-This product requires the 'threadframe' python module
-(http://www.majid.info/mylos/stories/2004/06/10/threadframe.html).
+When running on Python2.4,
+this product requires the 'threadframe' python module
+(https://majid.info/blog/threadframe-multithreaded-stack-frame-extraction-for-python/).
 When DeadlockDebugger starts, it verifies that threadframe is available,
 please check the event.log for ERROR message.
 
