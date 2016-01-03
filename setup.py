@@ -18,7 +18,7 @@ if sys.version_info < (2, 5):
 
 setup(
     name='ZopeHealthWatcher',
-    version='0.9.0',
+    version='0.9.1.dev0',
     description=(
         'ZopeHealthWatcher allows you to monitor and debug '
         'the threads of a Zope application.'
