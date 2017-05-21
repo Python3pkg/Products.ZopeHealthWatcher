@@ -24,7 +24,7 @@ with tracebacks of the running python threads will be made.
 
 You MUST configure the file custom.py before use.
 """
-import custom
+from . import custom
 
 try:
     from zLOG import LOG, INFO, ERROR
@@ -46,5 +46,5 @@ elif custom.SECRET == 'secret':
     LOG('ZopeHealthWatcher', ERROR,
         "Not activated, you must change SECRET in custom.py")
 else:
-    import dumper
+    from . import dumper
     LOG('ZopeHealthWatcher', INFO, "Installed")

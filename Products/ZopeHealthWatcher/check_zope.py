@@ -10,7 +10,7 @@
 import os
 import shutil
 import sys
-import custom
+from . import custom
 from urllib import FancyURLopener
 
 OK = (0, 'OK - %s')
@@ -77,21 +77,21 @@ def main():
         if len(modules) > 0:
             print('Information:')
         for name, value in modules:
-            print('\t%s %s' % (name, value))
+            print(('\t%s %s' % (name, value)))
         if len(dump) > 0:
             print('')
             print('Dump:')
-            print('\n'.join(dump))
+            print(('\n'.join(dump)))
             print('')
 
-    print('Idle: %s\tBusy: %s' % (idle, busy))
-    print(state[1])
+    print(('Idle: %s\tBusy: %s' % (idle, busy)))
+    print((state[1]))
     sys.exit(state[0])
 
 def get_result(url):
     try:
         modules, dump, idle, busy = query_zope(url)
-    except Exception, e:
+    except Exception as e:
         return [], '', 0, 0, _(FAILURE, str(e))
     if idle == 0:
         state = _(CRITICAL, 'No more Zeo client available')

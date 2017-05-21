@@ -21,10 +21,10 @@ ZServer hook to dump a traceback of the running python threads.
 """
 import os
 import sys
-import thread
+import _thread
 import traceback
 from datetime import datetime
-from cStringIO import StringIO
+from io import StringIO
 from mako.template import Template
 
 if not hasattr(sys, '_current_frames'):
@@ -43,8 +43,8 @@ except ImportError:
             logging.info('%s %s' % (title, msg))
     LOG = _log
 
-import custom
-from modules import MODULES
+from . import custom
+from .modules import MODULES
 
 def dump_modules():
     return [mod() for mod in MODULES]
@@ -56,9 +56,9 @@ def dump_threads():
     """
     res = []
     frames = sys._current_frames()
-    this_thread_id = thread.get_ident()
+    this_thread_id = _thread.get_ident()
 
-    for thread_id, frame in frames.iteritems():
+    for thread_id, frame in frames.items():
         if thread_id == this_thread_id:
             continue
         # Find request in frame
